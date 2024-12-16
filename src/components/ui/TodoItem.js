@@ -4,6 +4,8 @@ import CheckBox from './CheckBox';
 export default function TodoItem(props) {
     const { data, changeStatus } = props;
 
+    //checking and ccompleting 
+
     const handleChange = (checked) => {
         if (checked) {
             if (window.confirm('Are you sure you want to mark this task as completed?')) {

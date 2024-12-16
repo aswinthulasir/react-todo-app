@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { TodoContext } from '../wrappers/StateProvider';  // Make sure the correct path is used for importing
+import { TodoContext } from '../wrappers/StateProvider'; 
 import { applyFilter, search, FILTER_ACTIVE } from '../../services/filter';
 import Header from './Header';
 import FilteredList from './FilteredList';
@@ -10,6 +10,7 @@ export default function TodoList() {
     const { todos, filter, query, addNew, changeFilter, changeStatus, setSearchQuery } = useContext(TodoContext);
     const activeItemCount = applyFilter(todos, FILTER_ACTIVE).length;
     const items = search(applyFilter(todos, filter), query);
+    //(the superior code section which has all the funcs)
 
     return (
         <div className="container">

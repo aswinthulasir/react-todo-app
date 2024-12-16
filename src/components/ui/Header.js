@@ -3,8 +3,8 @@ import React, { useState } from 'react';
 export default function Header({ addNew, filter, query, setSearchQuery, changeFilter }) {
     const [newTodoText, setNewTodoText] = useState('');
     const [selectedDate, setSelectedDate] = useState('');
-    const [currentFilter, setCurrentFilter] = useState(filter); // to store filter
-    const [priority, setPriority] = useState('low'); // default priority
+    const [currentFilter, setCurrentFilter] = useState(filter); 
+    const [priority, setPriority] = useState('low'); 
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -13,23 +13,23 @@ export default function Header({ addNew, filter, query, setSearchQuery, changeFi
                 id: Date.now(),
                 text: newTodoText,
                 completed: false,
-                date: selectedDate || new Date().toISOString(), // if no date selected, use current date
-                priority, // include priority
+                date: selectedDate || new Date().toISOString(), 
+                priority, 
             };
-            addNew(newTodo);  // Calls the addNew function passed down from the parent component
-            setNewTodoText(''); // Clears the input after submitting
-            setSelectedDate(''); // Clears the date input
-            setPriority('low'); // Reset to default priority
+            addNew(newTodo);  //new todo addd
+            setNewTodoText(''); 
+            setSelectedDate(''); 
+            setPriority('low'); 
         }
     };
 
     const handleFilterChange = (e) => {
         setCurrentFilter(e.target.value);
-        changeFilter(e.target.value);  // Update filter in parent component
+        changeFilter(e.target.value);  
     };
 
     const handlePriorityChange = (e) => {
-        setPriority(e.target.value);  // Update priority when user selects a different option
+        setPriority(e.target.value);  //priority handle function
     };
 
     return (
@@ -45,7 +45,7 @@ export default function Header({ addNew, filter, query, setSearchQuery, changeFi
                 <button type="submit">Add Todo</button>
             </form>
 
-            {/* Filter Selection */}
+          
             <div className="filter-section">
                 <label htmlFor="filter">Filter: </label>
                 <select id="filter" value={currentFilter} onChange={handleFilterChange}>
@@ -55,7 +55,7 @@ export default function Header({ addNew, filter, query, setSearchQuery, changeFi
                 </select>
             </div>
 
-            {/* Date Selection */}
+            
             <div className="date-section">
                 <label htmlFor="date">Due Date: </label>
                 <input
@@ -66,7 +66,7 @@ export default function Header({ addNew, filter, query, setSearchQuery, changeFi
                 />
             </div>
 
-            {/* Priority Selection */}
+           
             <div className="priority-section">
                 <label htmlFor="priority">Priority: </label>
                 <select id="priority" value={priority} onChange={handlePriorityChange}>
@@ -76,7 +76,7 @@ export default function Header({ addNew, filter, query, setSearchQuery, changeFi
                 </select>
             </div>
 
-            {/* Optional: Add a search bar */}
+           
             <input
                 type="text"
                 value={query}
