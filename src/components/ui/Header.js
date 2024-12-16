@@ -36,18 +36,18 @@ export default function Header({ addNew, filter, query, setSearchQuery, changeFi
         <header className="todo-header">
             <h1>Todo List</h1>
             <form onSubmit={handleSubmit}>
-                <input
+                <input className='inp'
                     type="text"
                     value={newTodoText}
                     onChange={(e) => setNewTodoText(e.target.value)}
                     placeholder="Add a new todo"
                 />
-                <button type="submit">Add Todo</button>
+                <button className='btn' type="submit">Add Todo</button>
             </form>
 
           
             <div className="filter-section">
-                <label htmlFor="filter">Filter: </label>
+                <label className='inp' htmlFor="filter">Filter: </label>
                 <select id="filter" value={currentFilter} onChange={handleFilterChange}>
                     <option value="all">All</option>
                     <option value="active">Active</option>
@@ -68,7 +68,7 @@ export default function Header({ addNew, filter, query, setSearchQuery, changeFi
 
            
             <div className="priority-section">
-                <label htmlFor="priority">Priority: </label>
+                <label className='inp' htmlFor="priority">Priority: </label>
                 <select id="priority" value={priority} onChange={handlePriorityChange}>
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>
