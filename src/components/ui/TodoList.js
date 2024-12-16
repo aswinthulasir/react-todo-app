@@ -1,24 +1,24 @@
-import React from 'react';
-import Info from './Info';
+import React, { useContext } from 'react';
+import { TodoContext } from '../wrappers/StateProvider';  // Make sure the correct path is used for importing
+import { applyFilter, search, FILTER_ACTIVE } from '../../services/filter';
 import Header from './Header';
-import Footer from './Footer';
 import FilteredList from './FilteredList';
-import {applyFilter, search, FILTER_ACTIVE} from '../../services/filter';
+import Footer from './Footer';
+import Info from './Info';
 
-export default function TodoList(props) {
-    const {list, filter, mode, query} = props.data;
-    const {addNew, changeFilter, changeStatus, changeMode, setSearchQuery} = props.actions;
-    const activeItemCount = applyFilter(list, FILTER_ACTIVE).length;
-    const items = search(applyFilter(list, filter), query);
+export default function TodoList() {
+    const { todos, filter, query, addNew, changeFilter, changeStatus, setSearchQuery } = useContext(TodoContext);
+    const activeItemCount = applyFilter(todos, FILTER_ACTIVE).length;
+    const items = search(applyFilter(todos, filter), query);
 
     return (
         <div className="container">
             <div className="row">
                 <div className="todolist">
-                    <Header {...{addNew, mode, query, setSearchQuery}}/>
-                    <FilteredList {...{items, changeStatus}}/>
-                    <Footer {...{activeItemCount, filter, changeFilter, mode, changeMode}}/>
-                    <Info {...{mode}}/>
+                    <Header {...{ addNew, query, setSearchQuery }} />
+                    <FilteredList {...{ items, changeStatus }} />
+                    <Footer {...{ activeItemCount, filter, changeFilter }} />
+                    <Info />
                 </div>
             </div>
         </div>

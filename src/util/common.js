@@ -35,3 +35,8 @@ export function wrapChildrenWith(children, props) {
 export function stringInclues(str, substr) {
     return str.indexOf(substr) !== -1;
 }
+
+// In common.js
+export function stringIncludes(str, search) {
+    return str.includes(search); // Standard JavaScript method to check for substring
+}

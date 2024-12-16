@@ -1,19 +1,20 @@
 import React from 'react';
-import Filter from './Filter';
-import ButtonWrapper from './ButtonWrapper';
 
 export default function Footer(props) {
-    const {activeItemCount, filter, changeFilter} = props;
+    const { activeItemCount, sortTasksBy } = props;
+
     return (
         <footer className="clearfix">
-            <div className="pull-left buttons">
-                <ButtonWrapper {...props}/>
-            </div>
             <div className="pull-left">
                 {`${activeItemCount} items left`}
-            </div>
-            <div className="pull-right">
-                <Filter {...{filter, changeFilter}}/>
+                <select
+                    className="form-select"
+                    onChange={(e) => sortTasksBy(e.target.value)}
+                >
+                    <option value="">Sort By</option>
+                    <option value="dueDate">Due Date</option>
+                    <option value="priority">Priority</option>
+                </select>
             </div>
         </footer>
     );
